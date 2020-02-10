@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:screenOrientation="portrait">
+
+    <TextView
+        android:id="@+id/tel1"
+        android:layout_width="176dp"
+        android:layout_height="41dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="326dp"
+        android:text="Telefon"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/email4"
+        android:layout_width="176dp"
+        android:layout_height="41dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="147dp"
+        android:text="E-Mail"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="371dp"
+        android:layout_height="65sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="201dp"
+        android:autoLink="email"
+        android:background="@drawable/rounded_button"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="email@gmail.com"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textColorLink="#ffffff"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/tel2"
+        android:layout_width="371dp"
+        android:layout_height="65sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="241dp"
+        android:autoLink="phone"
+        android:background="@drawable/rounded_button"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="069912121212"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textColorLink="#ffffff"
+        android:textSize="25sp" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="342dp"
+        android:layout_height="115dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="75dp"
+        app:srcCompat="@drawable/logohtl" />
+
+</RelativeLayout>

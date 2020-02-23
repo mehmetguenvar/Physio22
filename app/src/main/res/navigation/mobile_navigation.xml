@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_home">
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.example.mehme.physio22.fragments.EinstellungenFragment"
+        android:label="fragment_einstellungen"
+        tools:layout="@layout/fragment_einstellungen" />
+    <fragment
+        android:id="@+id/nav_feedback"
+        android:name="com.example.mehme.physio22.fragments.FeedbackFragment"
+        android:label="fragment_feedback"
+        tools:layout="@layout/fragment_feedback" />
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.mehme.physio22.fragments.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_kunde"
+            app:destination="@id/nav_kunde" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_settings"
+            app:destination="@id/nav_settings" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_feedback"
+            app:destination="@id/nav_feedback" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_kunde"
+        android:name="com.example.mehme.physio22.fragments.PatientFragment"
+        android:label="fragment_kunde"
+        tools:layout="@layout/fragment_kunde" />
+</navigation>

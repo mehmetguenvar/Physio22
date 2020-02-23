@@ -43,19 +43,19 @@ public class MainFragment extends Fragment {
         buttonPatient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_patientFragment);
+                Navigation.findNavController(view).navigate(R.id.action_nav_home_to_nav_kunde);
             }
         });
         buttonFeedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_feedbackFragment);
+                Navigation.findNavController(view).navigate(R.id.action_nav_home_to_nav_feedback);
             }
         });
         buttonEinstellungen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_einstellungenFragment);
+                Navigation.findNavController(view).navigate(R.id.action_nav_home_to_nav_settings);
             }
         });
 

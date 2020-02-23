@@ -42,31 +42,18 @@
         tools:layout_conversion_absoluteHeight="65dp"
         tools:layout_conversion_absoluteWidth="174dp" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="387dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logobig"
-        tools:layout_conversion_absoluteHeight="172dp"
-        tools:layout_conversion_absoluteWidth="370dp" />
-
     <Button
         android:id="@+id/patient"
         android:layout_width="174dp"
         android:layout_height="65dp"
-        android:layout_marginTop="116dp"
         android:background="@drawable/rounded_button"
         android:text="Patienten"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
         tools:layout_conversion_absoluteHeight="65dp"
-        tools:layout_conversion_absoluteWidth="174dp" />
+        tools:layout_conversion_absoluteWidth="174dp"
+        tools:layout_editor_absoluteY="272dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

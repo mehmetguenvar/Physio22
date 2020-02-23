@@ -8,13 +8,13 @@ public class KundenDatenDTO implements Serializable {
 
     private Long id;
 
-    private String emailadresse;
+    private String emailadresse ="";
 
-    private String vorname;
+    private String vorname="";
 
-    private String nachname;
+    private String nachname="";
 
-    private Integer vsnummer;
+    private Integer vsnummer=0;
 
 
     public Long getId() {

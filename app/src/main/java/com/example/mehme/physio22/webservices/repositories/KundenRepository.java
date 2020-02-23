@@ -27,9 +27,6 @@ public class KundenRepository {
 
     public static LiveData<LinkedList<KundenDatenDTO>> getAllKundenDaten(){
 
-        MutableLiveData<LinkedList<KundenDatenDTO>> kundendatenDTOs = new MutableLiveData<LinkedList<KundenDatenDTO>>();
-        kundendatenDTOs.setValue(new LinkedList<>());
-
         iPhysioService.getAllKunden(Rest.token).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<LinkedList<KundenDatenDTO>>() {
                     @Override
@@ -39,7 +36,7 @@ public class KundenRepository {
 
                     @Override
                     public void onNext(LinkedList<KundenDatenDTO> kundenDatenDTOS) {
-                        kundendatenDTOs.postValue(kundenDatenDTOS);
+                        kundendatenDTOsCached.postValue(kundenDatenDTOS);
                     }
 
                     @Override
@@ -53,7 +50,7 @@ public class KundenRepository {
                     }
                 });
 
-        return kundendatenDTOs;
+        return kundendatenDTOsCached;
 
     }
 }

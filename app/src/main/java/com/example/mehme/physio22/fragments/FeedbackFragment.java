@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.mehme.physio22.R;
+
 
 /**
  * A simple {@link Fragment} subclass.

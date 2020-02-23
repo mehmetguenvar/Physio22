@@ -1,23 +1,17 @@
 package com.example.mehme.physio22.dtos;
 
-
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
-/**
- */
-public class UebungDTO implements Serializable {
+
+public class KategorieDTO implements Serializable {
 
     private Long id;
-
-    private String filePath;
 
     private String bezeichnung;
 
 
-    private Set<KategorieDTO> kategories = new HashSet<>();
+    private Long oberkategorieId;
 
     public Long getId() {
         return id;
@@ -25,14 +19,6 @@ public class UebungDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getFilePath() {
-        return filePath;
-    }
-
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
     }
 
     public String getBezeichnung() {
@@ -43,12 +29,12 @@ public class UebungDTO implements Serializable {
         this.bezeichnung = bezeichnung;
     }
 
-    public Set<KategorieDTO> getKategories() {
-        return kategories;
+    public Long getOberkategorieId() {
+        return oberkategorieId;
     }
 
-    public void setKategories(Set<KategorieDTO> kategories) {
-        this.kategories = kategories;
+    public void setOberkategorieId(Long kategorieId) {
+        this.oberkategorieId = kategorieId;
     }
 
     @Override
@@ -60,11 +46,11 @@ public class UebungDTO implements Serializable {
             return false;
         }
 
-        UebungDTO uebungDTO = (UebungDTO) o;
-        if (uebungDTO.getId() == null || getId() == null) {
+        KategorieDTO kategorieDTO = (KategorieDTO) o;
+        if (kategorieDTO.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), uebungDTO.getId());
+        return Objects.equals(getId(), kategorieDTO.getId());
     }
 
     @Override
@@ -74,10 +60,10 @@ public class UebungDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "UebungDTO{" +
+        return "KategorieDTO{" +
             "id=" + getId() +
-            ", filePath='" + getFilePath() + "'" +
             ", bezeichnung='" + getBezeichnung() + "'" +
+            ", oberkategorieId=" + getOberkategorieId() +
             "}";
     }
 }

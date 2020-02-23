@@ -1,8 +1,8 @@
-package com.example.mehme.physio22.Webservices;
+package com.example.mehme.physio22.webservices;
 
-import com.example.mehme.physio22.DTOs.TokenDTO;
-import com.example.mehme.physio22.DTOs.UebungDTO;
-import com.example.mehme.physio22.DTOs.UserLoginDTO;
+import com.example.mehme.physio22.dtos.TokenDTO;
+import com.example.mehme.physio22.dtos.UebungDTO;
+import com.example.mehme.physio22.dtos.UserLoginDTO;
 
 import java.util.List;
 

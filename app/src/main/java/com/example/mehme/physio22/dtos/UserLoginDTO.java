@@ -1,4 +1,4 @@
-package com.example.mehme.physio22.DTOs;
+package com.example.mehme.physio22.dtos;
 
 public class UserLoginDTO {
 

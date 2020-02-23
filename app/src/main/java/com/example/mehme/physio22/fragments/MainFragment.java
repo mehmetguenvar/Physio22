@@ -1,4 +1,4 @@
-package com.example.mehme.physio22;
+package com.example.mehme.physio22.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.QuickContactBadge;
 import android.widget.Switch;
+
+import com.example.mehme.physio22.R;
 
 
 public class MainFragment extends Fragment {

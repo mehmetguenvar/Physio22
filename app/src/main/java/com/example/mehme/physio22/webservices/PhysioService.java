@@ -1,4 +1,4 @@
-package com.example.mehme.physio22.Webservices;
+package com.example.mehme.physio22.webservices;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

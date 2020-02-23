@@ -1,4 +1,4 @@
-package com.example.mehme.physio22;
+package com.example.mehme.physio22.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.example.mehme.physio22.R;
 
 
 public class PatientFragment extends Fragment {

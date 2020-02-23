@@ -10,6 +10,7 @@ public class KategorieDTO implements Serializable {
 
     private String bezeichnung;
 
+    private Boolean isLeaf;
 
     private Long oberkategorieId;
 
@@ -27,6 +28,14 @@ public class KategorieDTO implements Serializable {
 
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
+    }
+
+    public Boolean isIsLeaf() {
+        return isLeaf;
+    }
+
+    public void setIsLeaf(Boolean isLeaf) {
+        this.isLeaf = isLeaf;
     }
 
     public Long getOberkategorieId() {
@@ -61,9 +70,10 @@ public class KategorieDTO implements Serializable {
     @Override
     public String toString() {
         return "KategorieDTO{" +
-            "id=" + getId() +
-            ", bezeichnung='" + getBezeichnung() + "'" +
-            ", oberkategorieId=" + getOberkategorieId() +
-            "}";
+                "id=" + getId() +
+                ", bezeichnung='" + getBezeichnung() + "'" +
+                ", isLeaf='" + isIsLeaf() + "'" +
+                ", oberkategorieId=" + getOberkategorieId() +
+                "}";
     }
 }

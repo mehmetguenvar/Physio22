@@ -1,12 +1,16 @@
 package com.example.mehme.physio22.adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
+import androidx.navigation.NavHostController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mehme.physio22.R;
@@ -69,6 +73,15 @@ public class KundenCVAdapter extends RecyclerView.Adapter<KundenCVAdapter.ViewHo
             if(kunde.getVsnummer()!=null)
             vsnummer.setText(kunde.getVsnummer().toString());
             else vsnummer.setText("");
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Bundle x = new Bundle();
+                    x.putLong("KundeId",kunde.getId());
+                    Navigation.findNavController(view).navigate(R.id.action_nav_kunde_to_kundenErstellungFragment,x);
+                }
+            });
         }
     }
 }

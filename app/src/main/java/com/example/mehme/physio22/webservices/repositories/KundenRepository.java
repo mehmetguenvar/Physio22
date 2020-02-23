@@ -1,5 +1,7 @@
 package com.example.mehme.physio22.webservices.repositories;
 
+import android.widget.Toast;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -52,5 +54,89 @@ public class KundenRepository {
 
         return kundendatenDTOsCached;
 
+    }
+
+    public static MutableLiveData<KundenDatenDTO> saveKunde(KundenDatenDTO kundenDatenDTO){
+        MutableLiveData<KundenDatenDTO> kunde = new MutableLiveData<>();
+
+        if(kundenDatenDTO.getId()!=null)
+        iPhysioService.saveKunde(Rest.token,kundenDatenDTO).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<KundenDatenDTO>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(KundenDatenDTO kundenDatenDTO) {
+                        kunde.postValue(kundenDatenDTO);
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+        else iPhysioService.createKunde(Rest.token,kundenDatenDTO).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<KundenDatenDTO>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(KundenDatenDTO kundenDatenDTO) {
+                        kunde.postValue(kundenDatenDTO);
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+
+        return kunde;
+    }
+
+    public static MutableLiveData<KundenDatenDTO> getKunde(long id){
+        MutableLiveData<KundenDatenDTO> kunde = new MutableLiveData<>();
+
+        iPhysioService.getKunde(Rest.token,id).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<KundenDatenDTO>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(KundenDatenDTO kundenDatenDTO) {
+                        kunde.postValue(kundenDatenDTO);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+        return kunde;
     }
 }

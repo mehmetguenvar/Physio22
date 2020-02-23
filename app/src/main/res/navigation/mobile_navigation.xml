@@ -33,5 +33,28 @@
         android:id="@+id/nav_kunde"
         android:name="com.example.mehme.physio22.fragments.PatientFragment"
         android:label="fragment_kunde"
-        tools:layout="@layout/fragment_kunde" />
+        tools:layout="@layout/fragment_kunde" >
+        <action
+            android:id="@+id/action_nav_kunde_to_kundenErstellungFragment"
+            app:destination="@id/kundenErstellungFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/kundenErstellungFragment"
+        android:name="com.example.mehme.physio22.fragments.KundenErstellungFragment"
+        android:label="fragment_kunden_erstellung"
+        tools:layout="@layout/fragment_kunden_erstellung" />
+    <fragment
+        android:id="@+id/nav_kategorien"
+        android:name="com.example.mehme.physio22.fragments.KategorieFragment"
+        android:label="fragment_kategorie"
+        tools:layout="@layout/fragment_kategorie" >
+        <action
+            android:id="@+id/action_nav_kategorien_to_kategorieErstellungFragment"
+            app:destination="@id/kategorieErstellungFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/kategorieErstellungFragment"
+        android:name="com.example.mehme.physio22.KategorieErstellungFragment"
+        android:label="fragment_kategorie_erstellung"
+        tools:layout="@layout/fragment_kategorie_erstellung" />
 </navigation>

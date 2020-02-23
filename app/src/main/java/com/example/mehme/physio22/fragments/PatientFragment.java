@@ -83,6 +83,13 @@ public class PatientFragment extends Fragment {
             }
         });
 
+        buttonAddKunde.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_nav_kunde_to_kundenErstellungFragment);
+            }
+        });
+
         return view;
     }
 

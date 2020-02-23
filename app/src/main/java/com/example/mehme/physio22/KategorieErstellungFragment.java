@@ -13,10 +13,10 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class KundenErstellungFragment extends Fragment {
+public class KategorieErstellungFragment extends Fragment {
 
 
-    public KundenErstellungFragment() {
+    public KategorieErstellungFragment() {
         // Required empty public constructor
     }
 
@@ -25,7 +25,7 @@ public class KundenErstellungFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_kunden_erstellung, container, false);
+        return inflater.inflate(R.layout.fragment_kategorie_erstellung, container, false);
     }
 
 }

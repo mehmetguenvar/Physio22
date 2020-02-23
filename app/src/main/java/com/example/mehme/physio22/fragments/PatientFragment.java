@@ -4,8 +4,14 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,10 +19,21 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.mehme.physio22.R;
+import com.example.mehme.physio22.dtos.KundenDatenDTO;
+import com.example.mehme.physio22.viewmodels.KundenViewModel;
+
+import java.util.LinkedList;
 
 
 public class PatientFragment extends Fragment {
-    Button buttonPatientsuche;
+
+    private Button buttonAddKunde;
+    private RecyclerView kundenList;
+    private SwipeRefreshLayout swr;
+
+    private LiveData<LinkedList<KundenDatenDTO>> kundenDaten;
+    private KundenViewModel viewModel;
+
     public PatientFragment() {
         // Required empty public constructor
     }
@@ -25,21 +42,40 @@ public class PatientFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view  = inflater.inflate(R.layout.fragment_patient, container, false);
+        View view  = inflater.inflate(R.layout.fragment_kunde, container, false);
+//
+        //buttonPatientsuche = (Button) view.findViewById(R.id.patientsuche);
+//
+        //buttonPatientsuche.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View view) {
+        //        Navigation.findNavController(view).navigate(R.id.action_patientFragment_to_patientsucheFragment);
+        //    }
+        //});
 
-        buttonPatientsuche = (Button) view.findViewById(R.id.patientsuche);
+        buttonAddKunde = view.findViewById(R.id.fragmentKundeAddKundeButton);
+        kundenList = view.findViewById(R.id.fragmentKundeRV);
+        swr = view.findViewById(R.id.fragmentKundeSwipeRefresher);
 
-        buttonPatientsuche.setOnClickListener(new View.OnClickListener() {
+        viewModel = new ViewModelProvider(this).get(KundenViewModel.class);
+
+        kundenDaten = viewModel.update();
+        kundenDaten.observe(getViewLifecycleOwner(), new Observer<LinkedList<KundenDatenDTO>>() {
             @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_patientFragment_to_patientsucheFragment);
+            public void onChanged(LinkedList<KundenDatenDTO> kundenDatenDTOS) {
+
             }
         });
 
         return view;
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
+
+    }
 
     @Override
     public void onAttach(Context context) {

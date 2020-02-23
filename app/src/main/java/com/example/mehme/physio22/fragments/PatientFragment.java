@@ -10,6 +10,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -19,20 +20,23 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.mehme.physio22.R;
+import com.example.mehme.physio22.adapter.KundenCVAdapter;
 import com.example.mehme.physio22.dtos.KundenDatenDTO;
 import com.example.mehme.physio22.viewmodels.KundenViewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.LinkedList;
 
 
 public class PatientFragment extends Fragment {
 
-    private Button buttonAddKunde;
+    private FloatingActionButton buttonAddKunde;
     private RecyclerView kundenList;
     private SwipeRefreshLayout swr;
 
     private LiveData<LinkedList<KundenDatenDTO>> kundenDaten;
     private KundenViewModel viewModel;
+    private KundenCVAdapter kundenCVAdapter;
 
     public PatientFragment() {
         // Required empty public constructor
@@ -56,6 +60,10 @@ public class PatientFragment extends Fragment {
         buttonAddKunde = view.findViewById(R.id.fragmentKundeAddKundeButton);
         kundenList = view.findViewById(R.id.fragmentKundeRV);
         swr = view.findViewById(R.id.fragmentKundeSwipeRefresher);
+        kundenCVAdapter = new KundenCVAdapter(new LinkedList<>(),getContext());
+        kundenList.setAdapter(kundenCVAdapter);
+        kundenList.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
+
 
         viewModel = new ViewModelProvider(this).get(KundenViewModel.class);
 
@@ -63,7 +71,15 @@ public class PatientFragment extends Fragment {
         kundenDaten.observe(getViewLifecycleOwner(), new Observer<LinkedList<KundenDatenDTO>>() {
             @Override
             public void onChanged(LinkedList<KundenDatenDTO> kundenDatenDTOS) {
+                kundenCVAdapter.update(kundenDatenDTOS);
+                swr.setRefreshing(false);
+            }
+        });
 
+        swr.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                viewModel.update();
             }
         });
 

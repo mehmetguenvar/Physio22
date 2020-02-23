@@ -1,4 +1,4 @@
-package com.example.mehme.physio22.Retrofit;
+package com.example.mehme.physio22.DTOs;
 
 public class TokenDTO {
 

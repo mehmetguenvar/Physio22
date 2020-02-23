@@ -1,4 +1,8 @@
-package com.example.mehme.physio22.Retrofit;
+package com.example.mehme.physio22.Webservices;
+
+import com.example.mehme.physio22.DTOs.TokenDTO;
+import com.example.mehme.physio22.DTOs.UebungDTO;
+import com.example.mehme.physio22.DTOs.UserLoginDTO;
 
 import java.util.List;
 
@@ -13,7 +17,7 @@ public interface IPhysioService {
     Call<List<UebungDTO>> listRepos(String authentication);
 
     @POST("/api/authenticate")
-    Call<TokenDTO> authenticate(@Body  UserLoginDTO userLoginDTO);
+    Call<TokenDTO> authenticate(@Body UserLoginDTO userLoginDTO);
 
     // REST requests
 

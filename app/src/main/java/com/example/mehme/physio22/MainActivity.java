@@ -5,16 +5,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Switch;
 import android.widget.Toast;
 
-import com.example.mehme.physio22.Retrofit.PhysioService;
-import com.example.mehme.physio22.Retrofit.TokenDTO;
-import com.example.mehme.physio22.Retrofit.UserLoginDTO;
+import com.example.mehme.physio22.Webservices.PhysioService;
+import com.example.mehme.physio22.DTOs.TokenDTO;
+import com.example.mehme.physio22.DTOs.UserLoginDTO;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,21 +1,28 @@
 package com.example.mehme.physio22.dtos;
 
+import com.example.mehme.physio22.dtos.KategorieDTO;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
 
-/**
- */
+
 public class UebungDTO implements Serializable {
 
     private Long id;
 
     private String filePath;
 
+    @NotNull
     private String bezeichnung;
 
+
+    private byte[] bild;
+
+    private String bildContentType;
 
     private Set<KategorieDTO> kategories = new HashSet<>();
 
@@ -41,6 +48,22 @@ public class UebungDTO implements Serializable {
 
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
+    }
+
+    public byte[] getBild() {
+        return bild;
+    }
+
+    public void setBild(byte[] bild) {
+        this.bild = bild;
+    }
+
+    public String getBildContentType() {
+        return bildContentType;
+    }
+
+    public void setBildContentType(String bildContentType) {
+        this.bildContentType = bildContentType;
     }
 
     public Set<KategorieDTO> getKategories() {
@@ -78,6 +101,7 @@ public class UebungDTO implements Serializable {
             "id=" + getId() +
             ", filePath='" + getFilePath() + "'" +
             ", bezeichnung='" + getBezeichnung() + "'" +
+            ", bild='" + getBild() + "'" +
             "}";
     }
 }

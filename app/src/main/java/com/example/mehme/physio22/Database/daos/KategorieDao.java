@@ -8,6 +8,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
 
 import com.example.mehme.physio22.Database.entities.Kategorie;
@@ -20,18 +21,22 @@ import java.util.List;
 public interface KategorieDao {
 
     @Query("select * from kategorie")
-    public DataSource.Factory<Long,Kategorie> getAllKategorie();
+    public DataSource.Factory<Integer,Kategorie> getAllKategorie();
 
+    @Transaction
     @Query("select * from kategorie")
-    public DataSource.Factory<Long,KategorieWithKategorie> getAllKategorieWithSubKategories();
+    public DataSource.Factory<Integer,KategorieWithKategorie> getAllKategorieWithSubKategories();
 
-    @Query("select * from kategorie k where k.id = :id")
+    @Transaction
+    @Query("select * from kategorie k where k.kategorie_id = :id")
     public LiveData<KategorieWithKategorie> getKategorieWithSubKategories(long id);
 
+    @Transaction
     @Query("select * from kategorie")
-    public DataSource.Factory<Long,KategorieWithUebung> getAllKategorieWithUebungs();
+    public DataSource.Factory<Integer,KategorieWithUebung> getAllKategorieWithUebungs();
 
-    @Query("select * from kategorie k where k.id = :id")
+    @Transaction
+    @Query("select * from kategorie k where k.kategorie_id = :id")
     public LiveData<KategorieWithUebung> getKategorieWithUebungs(long id);
 
 

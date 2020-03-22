@@ -8,6 +8,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
 
 import com.example.mehme.physio22.Database.entities.Kategorie;
@@ -20,11 +21,13 @@ import java.util.List;
 public interface UebungFreigabeDao {
 
     @Query("select * from uebung_freigabe")
-    public DataSource.Factory<Long, UebungFreigabe> getAllUebungFreigabe();
+    public DataSource.Factory<Integer, UebungFreigabe> getAllUebungFreigabe();
 
+    @Transaction
     @Query("select * from uebung_freigabe")
-    public DataSource.Factory<Long,UebungFreigabeWithUebung> getAllUebungFreigabeWithUebungs();
+    public DataSource.Factory<Integer,UebungFreigabeWithUebung> getAllUebungFreigabeWithUebungs();
 
+    @Transaction
     @Query("select * from uebung_freigabe where id = :id")
     public LiveData<UebungFreigabeWithUebung> getUebungFreigabeWithUebungs(long id);
 

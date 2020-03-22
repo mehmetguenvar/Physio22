@@ -1,9 +1,12 @@
 package com.example.mehme.physio22.Database.entities;
 
 
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
+import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
@@ -15,6 +18,7 @@ public class KundenDaten implements Serializable {
 
     @PrimaryKey
     @ColumnInfo(name = "id")
+    @SerializedName("id")
     private Long kundenDatenId;
 
     @ColumnInfo(name = "emailadresse")
@@ -79,5 +83,22 @@ public class KundenDaten implements Serializable {
             ", nachname='" + getNachname() + "'" +
             ", vsnummer=" + getVsnummer() +
             "}";
+    }
+
+    public boolean isSame(KundenDaten kobj){
+        if(kobj == null)return false;
+        try {
+
+            if(getKundenDatenId() == kobj.getKundenDatenId()
+                    && getEmailadresse() == kobj.getEmailadresse()
+                    && getNachname() == kobj.getNachname()
+                    && getVorname() == kobj.getVorname()
+                    && getVsnummer() == kobj.getVsnummer()){
+                return true;
+            }else return false;
+
+        }catch (Exception e){
+            return false;
+        }
     }
 }

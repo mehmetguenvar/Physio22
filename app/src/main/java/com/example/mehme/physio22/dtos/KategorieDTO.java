@@ -1,5 +1,7 @@
 package com.example.mehme.physio22.dtos;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -8,9 +10,10 @@ public class KategorieDTO implements Serializable {
 
     private Long id;
 
-    private String bezeichnung;
+    private String bezeichnung = "";
 
-    private Boolean isLeaf;
+    @NotNull
+    private Boolean isLeaf = false;
 
     private Long oberkategorieId;
 
@@ -45,6 +48,7 @@ public class KategorieDTO implements Serializable {
     public void setOberkategorieId(Long kategorieId) {
         this.oberkategorieId = kategorieId;
     }
+
 
     @Override
     public boolean equals(Object o) {

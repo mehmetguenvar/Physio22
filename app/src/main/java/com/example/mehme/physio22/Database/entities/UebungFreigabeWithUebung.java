@@ -11,8 +11,8 @@ public class UebungFreigabeWithUebung {
     public UebungFreigabe uebungFreigabe;
 
     @Relation(
-            parentColumn = "uebungFreigabeId",
-            entityColumn = "uebungId",
+            parentColumn = "id",
+            entityColumn = "uebung_id",
             associateBy = @Junction(UebungFreigabeUebungCrossRef.class)
     )
     public List<Uebung> uebungs;

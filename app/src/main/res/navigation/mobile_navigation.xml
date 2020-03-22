@@ -51,10 +51,30 @@
         <action
             android:id="@+id/action_nav_kategorien_to_kategorieErstellungFragment"
             app:destination="@id/kategorieErstellungFragment" />
+        <action
+            android:id="@+id/action_nav_kategorien_self"
+            app:destination="@id/nav_kategorien" />
+        <action
+            android:id="@+id/action_nav_kategorien_to_uebungFragment"
+            app:destination="@id/nav_uebung" />
     </fragment>
     <fragment
         android:id="@+id/kategorieErstellungFragment"
-        android:name="com.example.mehme.physio22.KategorieErstellungFragment"
+        android:name="com.example.mehme.physio22.fragments.KategorieErstellungFragment"
         android:label="fragment_kategorie_erstellung"
         tools:layout="@layout/fragment_kategorie_erstellung" />
+    <fragment
+        android:id="@+id/nav_uebung"
+        android:name="com.example.mehme.physio22.fragments.UebungFragment"
+        android:label="fragment_uebung"
+        tools:layout="@layout/fragment_uebung" >
+        <action
+            android:id="@+id/action_uebungFragment_to_uebungErstellungFragment"
+            app:destination="@id/uebungErstellungFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/uebungErstellungFragment"
+        android:name="com.example.mehme.physio22.fragments.UebungErstellungFragment"
+        android:label="fragment_uebung_erstellung"
+        tools:layout="@layout/fragment_uebung_erstellung" />
 </navigation>

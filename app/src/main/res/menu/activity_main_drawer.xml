@@ -21,7 +21,7 @@
         <item
             android:id="@+id/nav_feedback"
             android:icon="@drawable/logo"
-            android:title="@string/menu_slideshow" />
+            android:title="Feedback" />
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/logo"
@@ -31,9 +31,9 @@
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_uebung"
                 android:icon="@drawable/logo"
-                android:title="@string/menu_share" />
+                android:title="Übungen" />
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/logo"

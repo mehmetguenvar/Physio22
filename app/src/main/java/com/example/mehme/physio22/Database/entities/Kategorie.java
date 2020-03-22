@@ -3,14 +3,19 @@ package com.example.mehme.physio22.Database.entities;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
+
+import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
 /**
  * A Kategorie.
  */
-@Entity(tableName = "kategorie")
+@Entity(tableName = "kategorie", indices = {@Index("kategorie_id")})
+
 public class Kategorie implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -18,7 +23,8 @@ public class Kategorie implements Serializable {
 
     @PrimaryKey
     @NonNull
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "kategorie_id")
+    @SerializedName("id")
     private Long kategorieId;
 
     @ColumnInfo(name = "bezeichnung")
@@ -28,6 +34,17 @@ public class Kategorie implements Serializable {
     @ColumnInfo(name = "is_leaf")
     @NonNull
     private Boolean isLeaf = false;
+
+    @Ignore
+    private Long oberkategorieId;
+
+    public Long getOberkategorieId() {
+        return oberkategorieId;
+    }
+
+    public void setOberkategorieId(Long oberkategorieId) {
+        this.oberkategorieId = oberkategorieId;
+    }
 
     @NonNull
     public Long getKategorieId() {

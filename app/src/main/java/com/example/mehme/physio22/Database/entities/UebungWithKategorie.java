@@ -11,8 +11,8 @@ public class UebungWithKategorie {
     public Uebung uebung;
 
     @Relation(
-            parentColumn = "uebungId",
-            entityColumn = "kategorieId",
+            parentColumn = "uebung_id",
+            entityColumn = "kategorie_id",
             associateBy = @Junction(UebungKategorieCrossRef.class)
     )
     public List<Kategorie> kategories;

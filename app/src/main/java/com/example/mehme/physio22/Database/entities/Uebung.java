@@ -3,9 +3,16 @@ package com.example.mehme.physio22.Database.entities;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import com.example.mehme.physio22.dtos.KategorieDTO;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 
 /**
@@ -18,7 +25,8 @@ public class Uebung implements Serializable {
 
     @PrimaryKey
     @NonNull
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "uebung_id")
+    @SerializedName("id")
     private Long uebungId;
 
     @ColumnInfo(name = "file_path")
@@ -29,10 +37,22 @@ public class Uebung implements Serializable {
     private String bezeichnung;
 
     @ColumnInfo(name = "bild", typeAffinity = ColumnInfo.BLOB)
-    private byte[] bild;
+    @JsonAdapter(JsonAdapterByteArray.class)
+    private byte[] bild = new byte[0];
 
     @ColumnInfo(name = "bild_content_type")
     private String bildContentType;
+
+    @Ignore
+    private Set<Kategorie> kategories;
+
+    public Set<Kategorie> getKategories() {
+        return kategories;
+    }
+
+    public void setKategories(Set<Kategorie> kategories) {
+        this.kategories = kategories;
+    }
 
     @NonNull
     public Long getUebungId() {
@@ -85,5 +105,11 @@ public class Uebung implements Serializable {
             ", bild='" + getBild() + "'" +
             ", bildContentType='" + getBildContentType() + "'" +
             "}";
+    }
+
+    public boolean isSame(Uebung newItem) {
+        if(newItem != null && getUebungId() == newItem.getUebungId() && getBezeichnung().equals(newItem.getBezeichnung()) )
+            if((newItem.getBild() == null) == (getBild()==null) && getBild() != null && getBild().equals(newItem.getBild())) return true;
+        return false;
     }
 }

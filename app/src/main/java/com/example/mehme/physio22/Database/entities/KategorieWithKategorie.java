@@ -10,8 +10,8 @@ public class KategorieWithKategorie {
     public Kategorie kategorie;
 
     @Relation(
-            parentColumn = "kategorieId",
-            entityColumn = "kategorieId"
+            parentColumn = "kategorie_id",
+            entityColumn = "kategorie_id"
     )
     public List<Kategorie> unterKategorien;
 }

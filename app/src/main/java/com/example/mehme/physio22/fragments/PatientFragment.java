@@ -4,12 +4,14 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.paging.PagedList;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -17,15 +19,17 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
+
+import com.example.mehme.physio22.Database.entities.KundenDaten;
 import com.example.mehme.physio22.R;
 import com.example.mehme.physio22.adapter.KundenCVAdapter;
-import com.example.mehme.physio22.dtos.KundenDatenDTO;
+
 import com.example.mehme.physio22.viewmodels.KundenViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.LinkedList;
+import java.util.Objects;
 
 
 public class PatientFragment extends Fragment {
@@ -34,7 +38,7 @@ public class PatientFragment extends Fragment {
     private RecyclerView kundenList;
     private SwipeRefreshLayout swr;
 
-    private LiveData<LinkedList<KundenDatenDTO>> kundenDaten;
+    private LiveData<PagedList<KundenDaten>> kundenDaten;
     private KundenViewModel viewModel;
     private KundenCVAdapter kundenCVAdapter;
 
@@ -60,21 +64,27 @@ public class PatientFragment extends Fragment {
         buttonAddKunde = view.findViewById(R.id.fragmentKundeAddKundeButton);
         kundenList = view.findViewById(R.id.fragmentKundeRV);
         swr = view.findViewById(R.id.fragmentKundeSwipeRefresher);
-        kundenCVAdapter = new KundenCVAdapter(new LinkedList<>(),getContext());
+
+        viewModel = new ViewModelProvider(getActivity()).get(KundenViewModel.class);
+
+        //kundenDaten = viewModel.update();
+
+
+        kundenCVAdapter = new KundenCVAdapter(viewModel.getKundeDaten().getValue(),getContext());
         kundenList.setAdapter(kundenCVAdapter);
         kundenList.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
 
-
-        viewModel = new ViewModelProvider(this).get(KundenViewModel.class);
-
-        kundenDaten = viewModel.update();
-        kundenDaten.observe(getViewLifecycleOwner(), new Observer<LinkedList<KundenDatenDTO>>() {
+        /*
+        kundenDaten.observe(getViewLifecycleOwner(), new Observer<PagedList<KundenDaten>>() {
             @Override
-            public void onChanged(LinkedList<KundenDatenDTO> kundenDatenDTOS) {
+            public void onChanged(PagedList<KundenDaten> kundenDatenDTOS) {
                 kundenCVAdapter.update(kundenDatenDTOS);
                 swr.setRefreshing(false);
             }
-        });
+        });*/
+
+
+
 
         swr.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -91,6 +101,15 @@ public class PatientFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        viewModel.dataSource.observe(getViewLifecycleOwner(), kundenDatens -> {
+            kundenCVAdapter.submitList(kundenDatens);
+            swr.setRefreshing(false);
+        });
     }
 
     @Override

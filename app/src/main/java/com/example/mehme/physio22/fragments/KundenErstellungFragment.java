@@ -16,8 +16,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.mehme.physio22.Database.entities.KundenDaten;
 import com.example.mehme.physio22.R;
-import com.example.mehme.physio22.dtos.KundenDatenDTO;
 import com.example.mehme.physio22.viewmodels.KundenViewModel;
 
 
@@ -27,7 +27,7 @@ import com.example.mehme.physio22.viewmodels.KundenViewModel;
 public class KundenErstellungFragment extends Fragment {
 
 
-    KundenDatenDTO kundenDatenDTO;
+    KundenDaten kundenDatenDTO;
 
     EditText vorname;
     EditText nachname;
@@ -53,19 +53,19 @@ public class KundenErstellungFragment extends Fragment {
         vsnummer = v.findViewById(R.id.editTextKundenErstellungVsNummer);
         saveButton = v.findViewById(R.id.buttonSaveKunde);
 
-        kundenViewModel = new ViewModelProvider(this).get(KundenViewModel.class);
+        kundenViewModel = new ViewModelProvider(getActivity()).get(KundenViewModel.class);
 
         if(getArguments() != null && getArguments().getLong("KundeId",-1) != -1){
-            kundenViewModel.getKunde(getArguments().getLong("KundeId",-1)).observe(getViewLifecycleOwner(), new Observer<KundenDatenDTO>() {
+            kundenViewModel.getKunde(getArguments().getLong("KundeId",-1)).observe(getViewLifecycleOwner(), new Observer<KundenDaten>() {
                 @Override
-                public void onChanged(KundenDatenDTO kundenDatenDTOa) {
+                public void onChanged(KundenDaten kundenDatenDTOa) {
                     kundenDatenDTO = kundenDatenDTOa;
                     setData();
                     setBinder();
                 }
             });
         }else{
-            kundenDatenDTO = new KundenDatenDTO();
+            kundenDatenDTO = new KundenDaten();
             setData();
             setBinder();
         }
@@ -81,7 +81,7 @@ public class KundenErstellungFragment extends Fragment {
                     setBinder();
                 }
                 else
-                    Toast.makeText(getContext(),"Fehler",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),"Fehler beim speichern",Toast.LENGTH_LONG).show();
                 });
             }
         });

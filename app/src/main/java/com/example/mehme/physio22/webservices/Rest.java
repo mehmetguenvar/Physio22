@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Rest {
 
-    private static String server = "http://192.168.56.1:80";
+    private static String server = "http://10.0.0.34:80";
     public static IPhysioService physioService;
     public static Gson gson;
     public static UserLoginDTO userLoginDTO;

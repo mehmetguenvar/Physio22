@@ -73,7 +73,10 @@ public class KategorieCVAdapter extends RecyclerView.Adapter<KategorieCVAdapter.
                 public boolean onLongClick(View view) {
                     Bundle x = new Bundle();
                     x.putLong("KategorieId",kategorieDTO.getId());
-                    //Navigation.findNavController(view).navigate(R.id.action_nav_kunde_to_kundenErstellungFragment,x);
+                    if(kategorieDTO.getOberkategorieId() != null)
+                    x.putLong("OberKategorieId",kategorieDTO.getOberkategorieId());
+                    // Geht zur Kategorie bearbeitung
+                    Navigation.findNavController(view).navigate(R.id.action_nav_kategorien_to_kategorieErstellungFragment,x);
                     return true;
                 }
             });
@@ -82,9 +85,18 @@ public class KategorieCVAdapter extends RecyclerView.Adapter<KategorieCVAdapter.
                 @Override
                 public void onClick(View view) {
                     if(kategorieDTO.isIsLeaf()==null || kategorieDTO.isIsLeaf()){
-                        //uebungen anzeigen
+                        // Uebung Kategorie
+                        Bundle x = new Bundle();
+                        x.putLong("KategorieId",kategorieDTO.getId());
+                        x.putString("KategorieName",kategorieDTO.getBezeichnung());
+                        Navigation.findNavController(view).navigate(R.id.action_nav_kategorien_to_uebungFragment,x);
                     }else{
+
                         // zur nächsten Kategorie
+                        Bundle x = new Bundle();
+                        x.putLong("KategorieId",kategorieDTO.getId());
+                        x.putString("KategorieName",kategorieDTO.getBezeichnung());
+                        Navigation.findNavController(view).navigate(R.id.action_nav_kategorien_self,x);
                     }
                 }
             });

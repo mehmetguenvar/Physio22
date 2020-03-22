@@ -4,26 +4,33 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverter;
+import androidx.room.TypeConverters;
+
+import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * A UebungFreigabe.
  */
 @Entity(tableName = "uebung_freigabe")
+@TypeConverters({MyTypeConverters.class})
 public class UebungFreigabe implements Serializable {
 
     @PrimaryKey 
     @NonNull
     @ColumnInfo(name = "id")
+    @SerializedName("id")
     private Long uebungFreigabeId;
 
     @ColumnInfo(name = "token")
     private String token;
 
     @ColumnInfo(name = "dauer")
-    private LocalDate dauer;
+    private Date dauer;
 
     @NonNull
     public Long getUebungFreigabeId() {
@@ -42,11 +49,11 @@ public class UebungFreigabe implements Serializable {
         this.token = token;
     }
 
-    public LocalDate getDauer() {
+    public Date getDauer() {
         return dauer;
     }
 
-    public void setDauer(LocalDate dauer) {
+    public void setDauer(Date dauer) {
         this.dauer = dauer;
     }
 

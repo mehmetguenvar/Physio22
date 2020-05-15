@@ -14,7 +14,6 @@ public class UebungFreigabeDTO implements Serializable {
 
     private LocalDate dauer;
 
-
     private Set<UebungDTO> uebungs = new HashSet<>();
 
     private Long kundeId;
